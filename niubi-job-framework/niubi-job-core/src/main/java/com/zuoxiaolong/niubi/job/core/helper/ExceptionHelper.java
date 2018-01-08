@@ -26,10 +26,13 @@ import com.zuoxiaolong.niubi.job.core.exception.NiubiException;
  */
 public abstract class ExceptionHelper {
 
+    // 最大堆栈跟踪深度
     private static final int MAX_STACK_TRACE_DEEP = 20;
 
+    // 默认结束字符串
     private static final String DEFAULT_END_STRING = "...";
 
+    // 最大长度
     private static final int MAX_LENGTH = 5000 - DEFAULT_END_STRING.length();
 
     /**

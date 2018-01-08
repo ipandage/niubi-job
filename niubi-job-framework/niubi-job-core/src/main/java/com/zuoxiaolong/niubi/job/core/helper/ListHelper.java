@@ -27,7 +27,13 @@ import java.util.List;
  * @since 0.9.3
  */
 public interface ListHelper {
-
+    /**
+     * 增加元素
+     * @param list 列表元素
+     * @param element 单个元素
+     * @param <T>
+     * @return
+     */
     static <T> List<T> add(List<T> list, T element) {
         List<T> mergeResult = new ArrayList<>();
         if (list != null) {
@@ -39,10 +45,20 @@ public interface ListHelper {
         return mergeResult;
     }
 
+    /**
+     * 集合是否为空
+     * @param collection
+     * @return
+     */
     static boolean isEmpty(Collection<?> collection) {
         return collection == null || collection.isEmpty();
     }
 
+    /**
+     * 对象数组是否为空
+     * @param array
+     * @return
+     */
     static boolean isEmpty(Object[] array) {
         return array == null || array.length == 0;
     }

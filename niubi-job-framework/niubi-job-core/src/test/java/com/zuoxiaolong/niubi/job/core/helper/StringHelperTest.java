@@ -35,6 +35,8 @@ public class StringHelperTest {
         Assert.assertNull(StringHelper.appendSlant(null));
         Assert.assertEquals("api/v1/", StringHelper.appendSlant("api/v1/"));
         Assert.assertEquals("api/v1/", StringHelper.appendSlant("api/v1"));
+        Assert.assertEquals("api/v1/", StringHelper.appendSlant("api\\v1"));
+        Assert.assertEquals("api/v1/", StringHelper.appendSlant("api\\v1\\"));
     }
 
     @Test

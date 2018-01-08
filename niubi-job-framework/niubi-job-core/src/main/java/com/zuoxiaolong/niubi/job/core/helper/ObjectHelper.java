@@ -28,12 +28,20 @@ import java.lang.reflect.Method;
  */
 public abstract class ObjectHelper {
 
+	// 临时Id前缀
 	private static final String TRANSIENT_ID_SUFFIX = "Id";
 
 	public static boolean isEmpty(Object object) {
 		return object == null || object.toString().trim().length() == 0;
 	}
 
+	/**
+	 * 是否是临时id
+	 * @param clazz
+	 * @param field
+	 * @param <T>
+	 * @return
+	 */
 	public static <T> boolean isTransientId(Class<T> clazz, Field field) {
 		if (!field.getName().endsWith(TRANSIENT_ID_SUFFIX)) {
 			return false;

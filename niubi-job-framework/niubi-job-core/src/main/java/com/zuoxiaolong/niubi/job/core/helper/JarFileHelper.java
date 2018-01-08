@@ -20,11 +20,17 @@ import java.io.File;
 import java.io.IOException;
 
 /**
+ * jar文件帮助类
  * @author Xiaolong Zuo
  * @since 0.9.3
  */
 public interface JarFileHelper {
 
+    /**
+     * 获得jar文件名称
+     * @param jarFilePath jar 文件路径
+     * @return
+     */
     static String getJarFileName(String jarFilePath) {
         if (jarFilePath == null) {
             return null;
@@ -36,6 +42,13 @@ public interface JarFileHelper {
         return jarFileName.substring(jarFileName.lastIndexOf("\\") + 1);
     }
 
+    /**
+     * 下载jar
+     * @param jarFileParentPath
+     * @param jarUrl
+     * @return
+     * @throws IOException
+     */
     static String downloadJarFile(String jarFileParentPath, String jarUrl) throws IOException {
         String jarFileName = jarUrl.substring(jarUrl.lastIndexOf("/") + 1);
         String jarFilePath = StringHelper.appendSlant(jarFileParentPath) + jarFileName;

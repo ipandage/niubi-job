@@ -67,6 +67,12 @@ public interface IOHelper {
         return bytes;
     }
 
+    /**
+     * 读取流字节数组
+     * @param inputStream 输入流
+     * @return 字节数组
+     * @throws IOException
+     */
     static byte[] readStreamBytesAndClose(InputStream inputStream) throws IOException {
         byte[] bytes = readStreamBytes(inputStream);
         inputStream.close();

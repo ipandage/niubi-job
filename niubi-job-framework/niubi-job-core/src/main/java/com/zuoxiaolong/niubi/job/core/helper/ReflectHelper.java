@@ -27,7 +27,11 @@ import java.lang.reflect.Method;
  * @since 0.9.3
  */
 public interface ReflectHelper {
-
+    /**
+     * 拷贝属性值
+     * @param source
+     * @param target
+     */
     static void copyFieldValues(Object source, Object target) {
         if (source == null || target == null) {
             return;
@@ -50,6 +54,11 @@ public interface ReflectHelper {
         }
     }
 
+    /**
+     * 拷贝属性值跳过空对象
+     * @param source
+     * @param target
+     */
     static void copyFieldValuesSkipNull(Object source, Object target) {
         if (source == null || target == null) {
             return;
@@ -74,6 +83,11 @@ public interface ReflectHelper {
         }
     }
 
+    /**
+     * 获得所有属性
+     * @param object
+     * @return
+     */
     static Field[] getAllFields(Object object) {
         Class<?> clazz;
         if (object instanceof Class) {
@@ -95,6 +109,12 @@ public interface ReflectHelper {
         return fields;
     }
 
+    /**
+     * 获得get方法
+     * @param clazz
+     * @param fieldName
+     * @return
+     */
     static Method getGetterMethod(Class<?> clazz, String fieldName) {
         String methodName = "get" + fieldName.substring(0, 1).toUpperCase() + fieldName.substring(1);
         try {
@@ -104,6 +124,12 @@ public interface ReflectHelper {
         }
     }
 
+    /**
+     * 获得get方法
+     * @param clazz
+     * @param field
+     * @return
+     */
     static Method getGetterMethod(Class<?> clazz, Field field) {
         return getGetterMethod(clazz, field.getName());
     }
@@ -118,6 +144,14 @@ public interface ReflectHelper {
         }
     }
 
+    /**
+     * 获得继承方法
+     * @param clazz
+     * @param methodName
+     * @param parameterTypes
+     * @return
+     * @throws NoSuchMethodException
+     */
     static Method getInheritMethod(Class<?> clazz, String methodName, Class<?>... parameterTypes) throws NoSuchMethodException {
         try {
             return clazz.getDeclaredMethod(methodName, parameterTypes);
@@ -131,6 +165,13 @@ public interface ReflectHelper {
         }
     }
 
+    /**
+     * 通过get属性名称的方法获得属性值
+     * @param object
+     * @param clazz
+     * @param fieldName
+     * @return
+     */
     static Object getFieldValueWithGetterMethod(Object object, Class<?> clazz, String fieldName) {
         Method method = getGetterMethod(clazz, fieldName);
         try {
@@ -142,6 +183,14 @@ public interface ReflectHelper {
         }
     }
 
+    /**
+     * 通过set属性方法，设置属性值
+     * @param target
+     * @param value
+     * @param clazz
+     * @param field
+     * @return
+     */
     static Object setFieldValueWithSetterMethod(Object target, Object value, Class<?> clazz, Field field) {
         Method method = getSetterMethod(clazz, field);
         try {
