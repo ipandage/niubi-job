@@ -26,18 +26,38 @@ import org.apache.curator.framework.recipes.cache.PathChildrenCacheEvent;
  */
 public interface EventHelper {
 
+    /**
+     * 是否是子节点增加事件
+     * @param event
+     * @return
+     */
     static boolean isChildAddEvent(PathChildrenCacheEvent event) {
         return event != null && event.getType() == PathChildrenCacheEvent.Type.CHILD_ADDED;
     }
 
+    /**
+     * 是否是子节点更新事件
+     * @param event
+     * @return
+     */
     static boolean isChildUpdateEvent(PathChildrenCacheEvent event) {
         return event != null && event.getType() == PathChildrenCacheEvent.Type.CHILD_UPDATED;
     }
 
+    /**
+     * 是否是子节点移除事件
+     * @param event
+     * @return
+     */
     static boolean isChildRemoveEvent(PathChildrenCacheEvent event) {
         return event != null && event.getType() == PathChildrenCacheEvent.Type.CHILD_REMOVED;
     }
 
+    /**
+     * 是否是子节点修改事件
+     * @param event
+     * @return
+     */
     static boolean isChildModifyEvent(PathChildrenCacheEvent event) {
         return isChildAddEvent(event) || isChildRemoveEvent(event) || isChildUpdateEvent(event);
     }

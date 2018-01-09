@@ -32,6 +32,7 @@ import java.lang.reflect.Type;
  */
 public abstract class AbstractGenericData<E extends AbstractGenericData, T extends Comparable<T>> extends AbstractData implements Comparable<E> {
 
+    // 节点数据
     private T data;
 
     public AbstractGenericData(ChildData childData) {
@@ -60,6 +61,7 @@ public abstract class AbstractGenericData<E extends AbstractGenericData, T exten
 
     private Class<T> getGenericType() {
         Type type = getClass().getGenericSuperclass();
+        // ParameterizedType 获取泛型参数Class类型
         if (type instanceof ParameterizedType) {
             ParameterizedType parameterizedType = (ParameterizedType) type;
             return (Class<T>) parameterizedType.getActualTypeArguments()[1];
@@ -67,6 +69,10 @@ public abstract class AbstractGenericData<E extends AbstractGenericData, T exten
         throw new UnknownGenericTypeException();
     }
 
+    /**
+     * 获得节点数组字节数组
+     * @return
+     */
     public byte[] getDataBytes() {
         return JsonHelper.toBytes(data);
     }

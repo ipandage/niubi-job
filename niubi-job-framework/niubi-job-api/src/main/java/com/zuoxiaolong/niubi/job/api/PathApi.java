@@ -23,13 +23,28 @@ package com.zuoxiaolong.niubi.job.api;
  * @since 0.9.3
  */
 public interface PathApi {
-
+    /**
+     * 获取初始化锁路径
+     * @return
+     */
     String getInitLockPath();
 
+    /**
+     * 获节点路径
+     * @return
+     */
     String getNodePath();
 
+    /**
+     * 获取选择器路径
+     * @return
+     */
     String getSelectorPath();
 
+    /**
+     * 获取job路径
+     * @return
+     */
     String getJobPath();
 
 }

@@ -46,7 +46,7 @@ public class MasterSlaveJobData extends AbstractGenericData<MasterSlaveJobData, 
     @Setter
     @Getter
     public static class Data extends AbstractJobData<Data> {
-
+        // 节点路径
         private String nodePath;
 
         public void clearNodePath() {

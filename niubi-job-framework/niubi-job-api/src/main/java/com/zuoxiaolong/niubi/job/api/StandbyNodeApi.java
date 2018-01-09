@@ -27,13 +27,31 @@ import java.util.List;
  * @since 0.9.3
  */
 public interface StandbyNodeApi extends NodeApi {
-
+    /**
+     * 获得所有节点
+     * @return
+     */
     List<StandbyNodeData> getAllNodes();
 
+    /**
+     * 保存节点
+     * @param data
+     * @return
+     */
     String saveNode(StandbyNodeData.Data data);
 
+    /**
+     * 更新节点
+     * @param path
+     * @param data
+     */
     void updateNode(String path, StandbyNodeData.Data data);
 
+    /**
+     * 获得节点
+     * @param path
+     * @return
+     */
     StandbyNodeData getNode(String path);
 
 }

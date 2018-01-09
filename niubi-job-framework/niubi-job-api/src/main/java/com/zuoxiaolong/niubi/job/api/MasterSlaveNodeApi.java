@@ -27,13 +27,31 @@ import java.util.List;
  * @since 0.9.3
  */
 public interface MasterSlaveNodeApi extends NodeApi {
-
+    /**
+     * 获得所有节点
+     * @return
+     */
     List<MasterSlaveNodeData> getAllNodes();
 
+    /**
+     * 保存节点
+     * @param data
+     * @return
+     */
     String saveNode(MasterSlaveNodeData.Data data);
 
+    /**
+     * 更新节点
+     * @param path
+     * @param data
+     */
     void updateNode(String path, MasterSlaveNodeData.Data data);
 
+    /**
+     * 获得节点根据path
+     * @param path
+     * @return
+     */
     MasterSlaveNodeData getNode(String path);
 
 }

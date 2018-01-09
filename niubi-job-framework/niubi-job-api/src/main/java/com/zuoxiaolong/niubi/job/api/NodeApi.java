@@ -22,7 +22,10 @@ package com.zuoxiaolong.niubi.job.api;
  * @author Xiaolong Zuo
  */
 public interface NodeApi {
-
+    /**
+     * 删除节点
+     * @param path
+     */
     void deleteNode(String path);
 
 }

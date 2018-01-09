@@ -28,15 +28,41 @@ import java.util.List;
  * @since 0.9.3
  */
 public interface StandbyJobApi {
-
+    /**
+     * 获得所有job
+     * @return
+     */
     List<StandbyJobData> getAllJobs();
 
+    /**
+     * 保存job
+     * @param group
+     * @param name
+     * @param data
+     */
     void saveJob(String group, String name, StandbyJobData.Data data);
 
+    /**
+     * 更新job
+     * @param group
+     * @param name
+     * @param data
+     */
     void updateJob(String group, String name, StandbyJobData.Data data);
 
+    /**
+     * 获得job 通过group和name
+     * @param group
+     * @param name
+     * @return
+     */
     StandbyJobData getJob(String group, String name);
 
+    /**
+     * 获得job通过路径
+     * @param path
+     * @return
+     */
     StandbyJobData getJob(String path);
 
 }

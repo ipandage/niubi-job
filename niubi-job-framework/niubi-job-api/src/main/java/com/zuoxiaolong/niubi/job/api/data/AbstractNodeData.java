@@ -24,10 +24,13 @@ package com.zuoxiaolong.niubi.job.api.data;
  */
 public class AbstractNodeData<T extends AbstractNodeData> implements Comparable<T> {
 
+    // 节点ip
     private String nodeIp;
 
+    // 节点状态
     private String nodeState;
 
+    // 运行中任务数量
     private Integer runningJobCount = 0;
 
     public AbstractNodeData() {

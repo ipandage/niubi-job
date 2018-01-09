@@ -171,6 +171,12 @@ public abstract class AbstractCurdApiImpl {
         }
     }
 
+    /**
+     * 创建临时时序节点
+     * @param path
+     * @param data
+     * @return
+     */
     protected String createEphemeralSequential(String path, byte[] data) {
         try {
             return getClient().create().creatingParentsIfNeeded().withMode(CreateMode.EPHEMERAL_SEQUENTIAL).forPath(path, data);
@@ -179,6 +185,10 @@ public abstract class AbstractCurdApiImpl {
         }
     }
 
+    /**
+     * 删除指定路径
+     * @param path
+     */
     protected void delete(String path) {
         try {
             getClient().delete().deletingChildrenIfNeeded().forPath(path);
@@ -187,6 +197,12 @@ public abstract class AbstractCurdApiImpl {
         }
     }
 
+    /**
+     * 保存数据
+     * @param path
+     * @param data
+     * @return
+     */
     protected Stat setData(String path, byte[] data) {
         try {
             return getClient().setData().forPath(path, data);

@@ -23,9 +23,10 @@ package com.zuoxiaolong.niubi.job.api.data;
  * @since 0.9.3
  */
 public abstract class AbstractData {
-
+    // 节点id
     protected String id;
 
+    // 节点路径
     protected String path;
 
     public String getId() {

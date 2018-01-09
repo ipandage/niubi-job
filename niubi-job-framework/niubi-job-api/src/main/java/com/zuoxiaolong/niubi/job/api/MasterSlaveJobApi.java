@@ -28,15 +28,41 @@ import java.util.List;
  * @since 0.9.3
  */
 public interface MasterSlaveJobApi {
-
+    /**
+     * 获取全部job
+     * @return
+     */
     List<MasterSlaveJobData> getAllJobs();
 
+    /**
+     * 保存job
+     * @param group
+     * @param name
+     * @param data
+     */
     void saveJob(String group, String name, MasterSlaveJobData.Data data);
 
+    /**
+     * 更新job
+     * @param group
+     * @param name
+     * @param data
+     */
     void updateJob(String group, String name, MasterSlaveJobData.Data data);
 
+    /**
+     * 获得job 根据group和name
+     * @param group
+     * @param name
+     * @return
+     */
     MasterSlaveJobData getJob(String group, String name);
 
+    /**
+     * 获得job 根据path
+     * @param path
+     * @return
+     */
     MasterSlaveJobData getJob(String path);
 
 }

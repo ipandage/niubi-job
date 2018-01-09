@@ -26,35 +26,49 @@ import com.zuoxiaolong.niubi.job.core.helper.StringHelper;
  * @since 0.9.3
  */
 public abstract class AbstractJobData<T extends AbstractJobData> implements Comparable<T> {
-
+    // 组名称
     private String groupName;
 
+    // job名称
     private String jobName;
 
+    // jar文件名称
     private String jarFileName;
 
+    // 扫描的包
     private String packagesToScan;
 
+    // job的cron表达式
     private String jobCron;
 
+    // 容器类型
     private String containerType = "Common";
 
+    // job状态
     private String jobState = "Shutdown";
 
+    // 失效策略
     private String misfirePolicy = "None";
 
+    // job操作日志Id
     private String jobOperationLogId;
 
+    // 操作结果
     private String operationResult;
 
+    // 原始jar文件名称
     private String originalJarFileName;
 
+    // job操作
     private String jobOperation;
 
+    // 版本
     private Long version;
 
+    // 错误信息
     private String errorMessage;
 
+    // 自增版本号
     public void incrementVersion() {
         if (version == null || version == Long.MAX_VALUE) {
             this.version = 1L;
@@ -172,22 +186,35 @@ public abstract class AbstractJobData<T extends AbstractJobData> implements Comp
         return (groupName + "." + jobName).compareTo(data.getGroupName() + "." + data.getJobName());
     }
 
+    /**
+     * 准备操作
+     */
     public void prepareOperation() {
         this.operationResult = "Waiting";
         this.errorMessage = null;
     }
 
+    /**
+     * 清除操作日志
+     */
     public void clearOperationLog() {
         this.jobOperationLogId = null;
         this.operationResult = null;
         this.errorMessage = null;
     }
 
+    /**
+     * 是否操作了
+     * @return
+     */
     public boolean isOperated() {
         return StringHelper.isEmpty(this.jobOperation) && StringHelper.isEmpty(this.originalJarFileName)
                 && this.operationResult != null && !this.operationResult.equals("Waiting");
     }
 
+    /**
+     * 初始化
+     */
     public void init() {
         setJobState("Shutdown");
         setJobOperation(null);
@@ -195,12 +222,19 @@ public abstract class AbstractJobData<T extends AbstractJobData> implements Comp
         setOperationResult("Success");
     }
 
+    /**
+     * 操作成功
+     */
     public void operateSuccess() {
         this.operationResult = "Success";
         this.jobOperation = null;
         this.originalJarFileName = null;
     }
 
+    /**
+     * 操作失败
+     * @param errorMessage
+     */
     public void operateFailed(String errorMessage) {
         this.operationResult = "Failed";
         this.errorMessage = errorMessage;
@@ -208,26 +242,50 @@ public abstract class AbstractJobData<T extends AbstractJobData> implements Comp
         this.originalJarFileName = null;
     }
 
+    /**
+     * 是否是spring容器
+     * @return
+     */
     public boolean isSpring() {
         return containerType != null && containerType.equals("Spring");
     }
 
+    /**
+     * 是否开始
+     * @return
+     */
     public boolean isStart() {
         return jobOperation != null && jobOperation.equals("Start");
     }
 
+    /**
+     * 是否启动
+     * @return
+     */
     public boolean isStartup() {
         return jobState != null && jobState.equals("Startup");
     }
 
+    /**
+     * 是否重启
+     * @return
+     */
     public boolean isRestart() {
         return jobOperation != null && jobOperation.equals("Restart");
     }
 
+    /**
+     * 是否停止
+     * @return
+     */
     public boolean isPause() {
         return jobOperation != null && jobOperation.equals("Pause");
     }
 
+    /**
+     * 是否是未知操作
+     * @return
+     */
     public boolean isUnknownOperation() {
         return !isStart() && !isRestart() && !isPause();
     }

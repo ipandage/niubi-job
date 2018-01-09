@@ -26,6 +26,11 @@ import com.zuoxiaolong.niubi.job.core.helper.AssertHelper;
  */
 public interface PathHelper {
 
+    /**
+     * 获得父级路径
+     * @param path
+     * @return
+     */
     static String getParentPath(String path) {
         AssertHelper.notNull(path, "path can't be null.");
         int index = path.lastIndexOf("/");
@@ -35,6 +40,13 @@ public interface PathHelper {
         return path.substring(0, index);
     }
 
+    /**
+     * 获得job路径
+     * @param jobParentPath job父级路径
+     * @param group 分组
+     * @param name 名称
+     * @return job路径
+     */
     static String getJobPath(String jobParentPath, String group, String name) {
         AssertHelper.notNull(jobParentPath, "jobParentPath can't be null.");
         AssertHelper.notNull(group, "group can't be null.");
@@ -42,6 +54,11 @@ public interface PathHelper {
         return jobParentPath + "/" + group + "." + name;
     }
 
+    /**
+     * 获得路径最后部分
+     * @param path
+     * @return
+     */
     static String getEndPath(String path) {
         AssertHelper.notNull(path, "path can't be null.");
         return path.indexOf("/") >= 0 ? path.substring(path.lastIndexOf("/") + 1) : path;
