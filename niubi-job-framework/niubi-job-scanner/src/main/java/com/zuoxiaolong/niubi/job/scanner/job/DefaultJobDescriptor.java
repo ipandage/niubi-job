@@ -28,19 +28,25 @@ import java.lang.reflect.Method;
  * @since 0.9.3
  */
 public class DefaultJobDescriptor implements JobDescriptor {
-
+    // 组
     private String group;
 
+    // 名称
     private String name;
 
+    // 方法
     private Method method;
 
+    // 类
     private Class<?> clazz;
 
+    // 是否有参数
     private boolean hasParameter;
 
+    // 表达式
     protected String cron;
 
+    // 错过任务的策略
     protected MisfirePolicy misfirePolicy;
 
     public DefaultJobDescriptor(Class<?> clazz, Method method, boolean hasParameter, Schedule schedule) {

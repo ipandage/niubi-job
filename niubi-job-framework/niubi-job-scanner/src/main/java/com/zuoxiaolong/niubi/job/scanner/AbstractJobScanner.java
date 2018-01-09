@@ -45,14 +45,19 @@ import java.util.List;
  */
 public abstract class AbstractJobScanner implements JobScanner {
 
+    // 任务描述符
     private List<JobDescriptor> jobDescriptorList;
 
+    // 是否是spring 环境
     private boolean hasSpringEnvironment;
 
+    // 类加载器
     private ClassLoader classLoader;
 
+    // jar文件路径数组
     private String[] jarFilePaths;
 
+    // 扫描的包
     private List<String> packagesToScan;
 
     public AbstractJobScanner(ClassLoader classLoader, String packagesToScan, String... jarFilePaths) {
@@ -107,6 +112,7 @@ public abstract class AbstractJobScanner implements JobScanner {
             }
             Class<?> clazz = classLoader.loadClass(className);
             Disabled classDisabled = clazz.getDeclaredAnnotation(Disabled.class);
+            // 跳过 Disabled 注解的类
             if (classDisabled != null) {
                 LoggerHelper.debug("skip disabled class [" + className + "]");
                 return;
@@ -121,9 +127,15 @@ public abstract class AbstractJobScanner implements JobScanner {
         }
     }
 
+    /**
+     * 扫描方法
+     * @param clazz
+     * @param method
+     */
     private void scanMethod(Class<?> clazz, Method method) {
         Schedule schedule = method.getDeclaredAnnotation(Schedule.class);
         Disabled methodDisabled = method.getDeclaredAnnotation(Disabled.class);
+        // 过滤 Disabled 注解的方法
         if (methodDisabled != null || schedule == null) {
             LoggerHelper.debug("skip disabled or un-scheduled method [" + clazz.getName() + "." + method.getName() + "]");
             return;

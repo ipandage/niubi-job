@@ -19,7 +19,7 @@ package com.zuoxiaolong.niubi.job.scanner.job;
 import java.util.HashMap;
 
 /**
- * 任务参数,用于支持使用参数启动任务.
+ * 任务参数,用于支持使用参数启动任务. TODO 没用上？
  *
  * @author Xiaolong Zuo
  * @since 0.9.3

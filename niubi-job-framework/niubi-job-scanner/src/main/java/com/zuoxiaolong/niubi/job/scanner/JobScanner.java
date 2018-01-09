@@ -30,8 +30,16 @@ public interface JobScanner {
 
     String APPLICATION_CONTEXT_XML_PATH = "applicationContext.xml";
 
+    /**
+     * 获得任务描述符
+     * @return
+     */
     List<JobDescriptor> getJobDescriptorList();
 
+    /**
+     * 是否是spring环境
+     * @return
+     */
     boolean hasSpringEnvironment();
 
 }

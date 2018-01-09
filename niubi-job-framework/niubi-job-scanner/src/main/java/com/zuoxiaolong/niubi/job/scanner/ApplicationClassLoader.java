@@ -74,6 +74,11 @@ public class ApplicationClassLoader extends URLClassLoader {
 
     private boolean entrust;
 
+    /**
+     * 应用类加载器 构造方法
+     * @param parent 父类加载器
+     * @param entrust 是否委托
+     */
     ApplicationClassLoader(ClassLoader parent, boolean entrust) {
         super(new URL[]{}, parent);
         AssertHelper.notNull(getParent(), "parent can't be null.");
@@ -224,6 +229,10 @@ public class ApplicationClassLoader extends URLClassLoader {
         }
     }
 
+    /**
+     * 增加jar文件
+     * @param jarFilePaths
+     */
     public synchronized void addJarFiles(String... jarFilePaths) {
         if (ListHelper.isEmpty(jarFilePaths)) {
             return;

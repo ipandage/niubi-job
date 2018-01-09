@@ -66,6 +66,7 @@ public abstract class ApplicationClassLoaderFactory {
      * @return jar包对应的类加载器
      */
     public static ApplicationClassLoader getJarApplicationClassLoader(String jarFilePath) {
+        // 缓存中获取，如果存在直接返回
         ApplicationClassLoader jarApplicationClassLoader = jarApplicationClassLoaderCache.get(jarFilePath);
         if (jarApplicationClassLoader != null) {
             return jarApplicationClassLoader;

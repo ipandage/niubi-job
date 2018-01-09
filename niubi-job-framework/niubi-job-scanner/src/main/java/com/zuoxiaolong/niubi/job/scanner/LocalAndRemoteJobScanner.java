@@ -71,6 +71,9 @@ public class LocalAndRemoteJobScanner extends AbstractJobScanner {
         }
     }
 
+    /**
+     * 扫描jar文件
+     */
     protected void scanJarFiles() {
         for (String jarFilePath : getJarFilePaths()) {
             File file = new File(jarFilePath);
@@ -101,6 +104,7 @@ public class LocalAndRemoteJobScanner extends AbstractJobScanner {
         }
     }
 
+    // 扫描jar文件
     private void scanJarFile(String jarFilePath) {
         JarFile jarFile;
         try {
