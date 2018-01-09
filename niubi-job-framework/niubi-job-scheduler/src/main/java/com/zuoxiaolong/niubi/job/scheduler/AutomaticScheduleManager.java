@@ -23,11 +23,22 @@ package com.zuoxiaolong.niubi.job.scheduler;
  * @since 0.9.4
  */
 public interface AutomaticScheduleManager extends ScheduleManager {
-
+    /**
+     * 启动
+     */
     void startup();
 
+    /**
+     * 启动 通过group
+     * @param group
+     */
     void startup(String group);
 
+    /**
+     * 启动 通过group 和 name
+     * @param group
+     * @param name
+     */
     void startup(String group, String name);
 
 }

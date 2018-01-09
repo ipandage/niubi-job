@@ -35,6 +35,9 @@ import java.util.Properties;
  */
 public abstract class AbstractNode implements Node {
 
+    /**
+     * 节点Ip
+     */
     private String nodeIp;
 
     /**

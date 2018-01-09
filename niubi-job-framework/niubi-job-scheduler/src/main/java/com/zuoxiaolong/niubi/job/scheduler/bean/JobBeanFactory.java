@@ -26,7 +26,12 @@ package com.zuoxiaolong.niubi.job.scheduler.bean;
  *
  */
 public interface JobBeanFactory {
-
+    /**
+     * 获得JobBean
+     * @param className
+     * @param <T>
+     * @return
+     */
     <T> T getJobBean(String className);
 
 }

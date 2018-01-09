@@ -46,6 +46,12 @@ public class DefaultJobBeanFactory implements JobBeanFactory {
         return registerJobBeanInstance(className);
     }
 
+    /**
+     * 注册JobBean
+     * @param className
+     * @param <T>
+     * @return
+     */
     private synchronized <T> T registerJobBeanInstance(String className) {
         try {
             T instance = (T) jobBeanInstanceClassMap.get(className);
