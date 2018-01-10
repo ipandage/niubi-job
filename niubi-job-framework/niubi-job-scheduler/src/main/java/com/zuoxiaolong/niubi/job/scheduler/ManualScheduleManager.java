@@ -29,6 +29,16 @@ public interface ManualScheduleManager extends ScheduleManager {
 
     void startupManual(String jarFilePath, String packagesToScan, boolean isSpring, String group, String cron, String misfirePolicy);
 
+    /**
+     * 手动启动
+     * @param jarFilePath
+     * @param packagesToScan
+     * @param isSpring
+     * @param group
+     * @param name
+     * @param cron
+     * @param misfirePolicy
+     */
     void startupManual(String jarFilePath, String packagesToScan, boolean isSpring, String group, String name, String cron, String misfirePolicy);
 
 }

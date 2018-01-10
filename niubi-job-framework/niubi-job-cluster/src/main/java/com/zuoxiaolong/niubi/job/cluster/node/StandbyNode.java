@@ -94,6 +94,9 @@ public class StandbyNode extends AbstractClusterJobNode {
 
     }
 
+    /**
+     * 初始化任务
+     */
     private void initJobs() {
         List<StandbyNodeData> standbyNodeDataList = standbyApiFactory.nodeApi().getAllNodes();
         if (!ListHelper.isEmpty(standbyNodeDataList)) {
@@ -154,6 +157,10 @@ public class StandbyNode extends AbstractClusterJobNode {
             jobCache.start();
         }
 
+        /**
+         * 启动任务
+         * @return
+         */
         private Integer startupJobs() {
             List<StandbyJobData> standbyJobDataList = standbyApiFactory.jobApi().getAllJobs();
             int runningJobCount = 0;

@@ -173,7 +173,7 @@ public class MasterSlaveNode extends AbstractClusterJobNode {
     }
 
     /**
-     * 释放节点的所有Job.
+     * 释放所有Job
      *
      * @param nodePath 节点path.
      * @param nodeData 节点数据.
@@ -209,6 +209,7 @@ public class MasterSlaveNode extends AbstractClusterJobNode {
          */
         private void checkUnavailableNode() {
             List<MasterSlaveNodeData> masterSlaveNodeDataList = masterSlaveApiFactory.nodeApi().getAllNodes();
+            // 有效节点路径集合
             List<String> availableNodes = new ArrayList<>();
             if (!ListHelper.isEmpty(masterSlaveNodeDataList)) {
                 availableNodes.addAll(masterSlaveNodeDataList.stream().map(MasterSlaveNodeData::getPath).collect(Collectors.toList()));
@@ -217,6 +218,7 @@ public class MasterSlaveNode extends AbstractClusterJobNode {
             if (!ListHelper.isEmpty(masterSlaveJobDataList)) {
                 for (MasterSlaveJobData masterSlaveJobData : masterSlaveJobDataList) {
                     MasterSlaveJobData.Data data = masterSlaveJobData.getData();
+                    // 找到无效节点释放
                     if (!availableNodes.contains(data.getNodePath())) {
                         data.release();
                         masterSlaveApiFactory.jobApi().updateJob(data.getGroupName(), data.getJobName(), data);
@@ -348,6 +350,11 @@ public class MasterSlaveNode extends AbstractClusterJobNode {
             return false;
         }
 
+        /**
+         * 执行操作
+         * @param nodeData
+         * @param jobData
+         */
         private void executeOperation(MasterSlaveNodeData.Data nodeData, MasterSlaveJobData jobData) {
             MasterSlaveJobData.Data data = jobData.getData();
             try {

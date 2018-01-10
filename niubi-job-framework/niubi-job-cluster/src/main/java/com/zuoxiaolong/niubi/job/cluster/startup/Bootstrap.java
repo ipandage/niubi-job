@@ -61,6 +61,7 @@ public final class Bootstrap {
     private static Object nodeInstance;
 
     public static void main(String[] args) throws Exception {
+        args = new String[]{"start"};
         if (!ListHelper.isEmpty(args) && "start".equals(args[0])) {
             start();
             LoggerHelper.info("bootstrap start successfully.");
@@ -105,18 +106,19 @@ public final class Bootstrap {
     }
 
     static {
-        String userDir = System.getProperty("user.dir").replace("\\", "/");
+        // String userDir = System.getProperty("user.dir").replace("\\", "/");
+        String userDir = "/Users/admin/Documents/git_workspace/source_read/job/niubi-job/niubi-job-framework/niubi-job-cluster";;
         //用于测试环境
         rootDir = userDir + "/target";
-        File binDir = new File(rootDir + "/bin");
-        if (!binDir.exists()) {
-            //用于生产环境
-            rootDir = userDir.substring(0, userDir.lastIndexOf("/"));
-            binDir = new File(rootDir + "/bin");
-            if (!binDir.exists()) {
-                throw new NiubiException(new IllegalArgumentException("can't find bin path."));
-            }
-        }
+//        File binDir = new File(rootDir + "/bin");
+//        if (!binDir.exists()) {
+//            //用于生产环境
+//            rootDir = userDir.substring(0, userDir.lastIndexOf("/"));
+//            binDir = new File(rootDir + "/bin");
+//            if (!binDir.exists()) {
+//                throw new NiubiException(new IllegalArgumentException("can't find bin path."));
+//            }
+//        }
         confDir = rootDir + "/conf";
         libDir = rootDir + "/lib";
         jobDir = rootDir + "/job";

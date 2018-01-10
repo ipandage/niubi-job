@@ -52,6 +52,9 @@ public class LocalAndRemoteJobScanner extends AbstractJobScanner {
         scanJarFiles();
     }
 
+    /**
+     * 扫描classpath
+     */
     protected void scanClasspath() {
         URL url = getClassLoader().getResource("");
         if (url == null) {

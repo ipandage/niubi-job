@@ -34,7 +34,7 @@ public class DatabaseInitListener {
     @Autowired
     private DatabaseInitializationService databaseInitializationService;
 
-    @PostConstruct
+    @PostConstruct // 初始化前做的操作
     public void listen() {
         databaseInitializationService.initialize();
     }

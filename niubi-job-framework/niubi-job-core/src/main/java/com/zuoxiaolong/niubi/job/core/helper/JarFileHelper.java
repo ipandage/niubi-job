@@ -53,6 +53,7 @@ public interface JarFileHelper {
         String jarFileName = jarUrl.substring(jarUrl.lastIndexOf("/") + 1);
         String jarFilePath = StringHelper.appendSlant(jarFileParentPath) + jarFileName;
         File file = new File(jarFilePath);
+        // 现在本地找 如果没找到远程获取
         if (file.exists()) {
             return jarFilePath;
         }

@@ -49,6 +49,9 @@ public class MasterSlaveJobData extends AbstractGenericData<MasterSlaveJobData, 
         // 节点路径
         private String nodePath;
 
+        /**
+         * 清理节点路径
+         */
         public void clearNodePath() {
             this.nodePath = null;
         }
@@ -58,6 +61,9 @@ public class MasterSlaveJobData extends AbstractGenericData<MasterSlaveJobData, 
             setNodePath(null);
         }
 
+        /**
+         * 释放
+         */
         public void release() {
             clearNodePath();
             if (isStartup()) {

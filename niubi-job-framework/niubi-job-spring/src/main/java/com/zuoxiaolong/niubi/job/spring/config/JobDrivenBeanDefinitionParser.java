@@ -40,6 +40,7 @@ public class JobDrivenBeanDefinitionParser implements BeanDefinitionParser {
         beanDefinition.setBeanClass(SpringContextJobDriver.class);
         propertyValues.addPropertyValue("packagesToScan", element.getAttribute("packagesToScan"));
         beanDefinition.setPropertyValues(propertyValues);
+        // 指定初始化方法
         beanDefinition.setInitMethodName("init");
         BeanDefinitionReaderUtils.registerWithGeneratedName(beanDefinition, parserContext.getRegistry());
         return beanDefinition;

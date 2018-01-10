@@ -55,12 +55,22 @@ public abstract class AbstractClusterJobNode extends AbstractNode implements Nod
         this.state.set(State.LATENT);
     }
 
+    // LATENT 休眠, JOINED 已加入, EXITED 已退出
     protected enum State { LATENT, JOINED, EXITED}
 
+    /**
+     * 是否已经加入
+     * @return
+     */
     protected boolean isJoined() {
         return this.state.get() == State.JOINED;
     }
 
+    /**
+     * 加载jar文件
+     * @param jarFileName
+     * @return
+     */
     protected String downloadJarFile(String jarFileName) {
         String jarFilePath;
         try {
@@ -84,8 +94,14 @@ public abstract class AbstractClusterJobNode extends AbstractNode implements Nod
         doExit();
     }
 
+    /**
+     * 加入
+     */
     protected abstract void doJoin();
 
+    /**
+     * 退出
+     */
     protected abstract void doExit();
 
     /**
@@ -129,8 +145,15 @@ public abstract class AbstractClusterJobNode extends AbstractNode implements Nod
             }
         }
 
+        /**
+         * 获得领导权
+         * @throws Exception
+         */
         public abstract void acquireLeadership() throws Exception;
 
+        /**
+         * 放弃领导权
+         */
         public abstract void relinquishLeadership();
 
     }

@@ -35,6 +35,7 @@ import java.util.concurrent.ConcurrentHashMap;
  */
 public abstract class AbstractScheduleManager implements ScheduleManager {
 
+    // job状态映射
     protected Map<String, ScheduleStatus> jobStatusMap;
 
     protected Map<String, List<String>> groupNameListMap;
